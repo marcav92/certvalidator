@@ -51,7 +51,7 @@ class RequestsCertificateFetcher(CertificateFetcher, RequestsFetcherMixin):
             try:
                 logger.info(f"Fetching certificates from {url}...")
                 results = await self._grab_certs(
-                    url, url_origin_type=url_origin_type
+                    url.replace(" ", "%20"), url_origin_type=url_origin_type
                 )
             except (ValueError, requests.RequestException) as e:
                 msg = f"Failed to fetch certificate(s) from url {url}."
